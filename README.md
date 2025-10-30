@@ -1,3 +1,5 @@
+![](https://github.com/RYbread0/newzyx/blob/7daf2f6cb1ca0c91f1bdb8fa4e8368d07e995b62/newzyx_logo.png)
+
 # NEWZYX - News podcast for kids & teens
 
 ## Congressional App Challenge 2025
