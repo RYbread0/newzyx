@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2685127239648448"
+     crossorigin="anonymous"></script>
+  <title>NEWZYX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #0f172a;
+  --card: #111936;
+  --muted: #94a3b8;
+  --text: #e2e8f0;
+  --brand: #60a5fa;
+  --brand-2: #a78bfa;
+  --accent: #22d3ee;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100dvh;
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.15), transparent 60%),
+    radial-gradient(900px 500px at 120% 0%, rgba(167,139,250,.15), transparent 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container { width: min(100%, 980px); margin: 0 auto; padding: 24px; }
+
+.site-header { background: transparent; padding: 1.5rem 0 0.5rem; border-bottom: 1px solid rgba(148,163,184,.15); }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.brand { display:flex; flex-direction:column; gap:6px; }
+.logo {
+  font-weight: 800; letter-spacing: .06em;
+  font-size: clamp(24px, 4vw, 36px);
+  background: linear-gradient(90deg, var(--brand), var(--brand-2), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.tag { color: var(--muted); font-size: 14px; }
+
+.btn {
+  appearance: none;
+  border: 1px solid rgba(148,163,184,.25);
+  background: rgba(17,25,54,.6);
+  color: #e2e8f0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn-primary { background: linear-gradient(90deg, #60a5fa, #22d3ee); border: none; color: #0b1224; }
+
+.card {
+  background: var(--card);
+  border: 1px solid rgba(148,163,184,.15);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 2.4vw, 24px);
+  margin: 24px 0;
+}
+.card-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 12px; }
+.card h2 { margin:0 0 8px; font-size: clamp(18px, 3vw, 22px); font-weight: 700; letter-spacing: .01em; }
+.meta { color: var(--muted); font-size: 14px; }
+
+.audio-card h2 { text-align:center; color: var(--brand); }
+.audio-card audio { width:100%; height:40px; margin-top: 1rem; border-radius:10px; outline:none; background:#0a1530; }
+.audio-card .hint { margin-top:.5rem; text-align:center; color: var(--muted); font-size: 14px; }
+
+.summaries-card h2 { text-align:center; color: var(--brand-2); }
+.summaries { white-space: pre-wrap; line-height: 1.7; font-size: clamp(15px, 1.9vw, 16px); color: #e6edf7; }
+
+.site-footer { border-top: 1px solid rgba(148,163,184,.15); background: transparent; margin-top: 24px; text-align:center; padding: 1rem; }
+.site-footer p { color: var(--muted); font-size: 14px; }
+
+.modal { position: fixed; inset: 0; display: none; z-index: 1000; }
+.modal.open { display: block; }
+.modal-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.5); backdrop-filter: blur(2px); }
+.modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 520px;
+  width: calc(100% - 32px);
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid rgba(148,163,184,.2);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.modal-title { margin: 0 0 8px; font-size: 1.25rem; }
+.modal-help { color: var(--muted); margin: 0 0 12px; font-size: .95rem; }
+.date-input {
+  width: 100%; padding: 10px 12px; border-radius: 10px;
+  border: 1px solid rgba(148,163,184,.25); background: #0a1530; color: #e2e8f0;
+  margin-bottom: 14px;
+  font-family: inherit;
+}
+
+/* Style the calendar icon */
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.date-input::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+@media (max-width: 520px) {
+  .container { padding: 20px; }
+  .card { margin: 16px 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; }
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">NEWZYX</div>
+        <div class="tag">Your only stream of daily news</div>
+      </div>
+
+      <div class="controls">
+        <button id="latestBtn" class="btn">Latest</button>
+        <button id="calendarBtn" class="btn btn-primary">📅 Choose Date</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card audio-card">
+      <h2>🎧 3-Minute Recap</h2>
+      <audio id="player" controls preload="metadata"></audio>
+      <p class="hint">Press play to listen to the quick summary.</p>
+    </section>
+
+    <section class="card summaries-card">
+      <div class="card-head">
+        <h2>📰 Today's News</h2>
+        <div class="meta">
+          <span id="whichDay">Showing: Latest</span> • <span id="updated">Loading…</span>
+        </div>
+      </div>
+      <div id="summaries" class="summaries">Loading summaries…</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made with ❤️ by NEWZYX</p>
+    </div>
+  </footer>
+
+  <!-- Date Picker Modal -->
+  <div id="dateModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="dateModalTitle">
+      <h3 id="dateModalTitle" class="modal-title">Select a date</h3>
+      <p class="modal-help">Your folders are named like <b>10.29.25</b> (M.D.YY). Pick a date and we'll load that day.</p>
+      <input id="dateInput" type="date" class="date-input" />
+      <div class="modal-actions">
+        <button id="dateCancel" class="btn" data-close>Cancel</button>
+        <button id="dateApply" class="btn btn-primary">Load</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+const summariesEl = document.getElementById('summaries');
+const updatedEl = document.getElementById('updated');
+const whichDayEl = document.getElementById('whichDay');
+const player = document.getElementById('player');
+
+// Modal helpers
+const modal = document.getElementById('dateModal');
+const openModal = () => { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); };
+const closeModal = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); };
+
+document.getElementById('calendarBtn').addEventListener('click', openModal);
+document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+document.getElementById('dateCancel').addEventListener('click', closeModal);
+
+// Get today's date in M.D.YY format
+function getTodayFolder() {
+  const today = new Date();
+  const m = today.getMonth() + 1; // no leading zero
+  const d = today.getDate();       // no leading zero
+  const yy = String(today.getFullYear() % 100).padStart(2, '0');
+  return `${m}.${d}.${yy}`;
+}
+
+// Convert yyyy-mm-dd to folder "M.D.YY" (no leading zeros, 2-digit year)
+function toFolderName(dateStr) {
+  const [yyyy, mm, dd] = dateStr.split('-').map(n => parseInt(n, 10));
+  const shortYear = (yyyy % 100).toString().padStart(2, '0');
+  const m = String(mm);
+  const d = String(dd);
+  return `${m}.${d}.${shortYear}`;
+}
+
+// Build S3 URL for files (FIXED: use regional endpoint to avoid 301 redirects)
+function getFileUrl(date, fileType) {
+  // Use regional endpoint to avoid redirects
+  const bucket = 'https://kidsnewsfeed.s3.amazonaws.com';
+  
+  if (fileType === 'summary') {
+    return `${bucket}/${date}_news_summary.txt`;
+  } else if (fileType === 'podcast') {
+    return `${bucket}/${date}_podcast.mp3`;
+  }
+}
+
+async function loadSummaries(url) {
+  console.log('Attempting to load:', url); // Debug log
+  const cacheBust = `${url}?t=${Date.now()}`;
+  
+  try {
+    const res = await fetch(cacheBust, { 
+      cache: 'no-store',
+      mode: 'cors'
+    });
+    
+    console.log('Response status:', res.status); // Debug log
+    
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    }
+    
+    const text = await res.text();
+    console.log('Loaded text length:', text.length); // Debug log
+    summariesEl.textContent = text;
+
+    const lastMod = res.headers.get('Last-Modified');
+    const when = lastMod ? new Date(lastMod) : new Date();
+    updatedEl.textContent = 'Updated ' + when.toLocaleString();
+  } catch (error) {
+    console.error('Load error:', error); // Debug log
+    throw error;
+  }
+}
+
+async function loadDay(dateFolder /* e.g., "10.29.25" or "" for today */) {
+  const targetDate = dateFolder || getTodayFolder();
+  
+  const summaryUrl = getFileUrl(targetDate, 'summary');
+  const podcastUrl = getFileUrl(targetDate, 'podcast');
+
+  console.log('Loading date:', targetDate); // Debug
+  console.log('Summary URL:', summaryUrl); // Debug
+  console.log('Podcast URL:', podcastUrl); // Debug
+
+  whichDayEl.textContent = 'Showing: ' + (dateFolder ? dateFolder : 'Latest');
+  summariesEl.textContent = 'Loading summaries…';
+  player.src = podcastUrl + `?t=${Date.now()}`;
+
+  try {
+    await loadSummaries(summaryUrl);
+  } catch (e) {
+    console.error('Failed to load:', e);
+    summariesEl.textContent = `Could not load summaries for ${targetDate}. 
+
+Error: ${e.message}
+
+Please check:
+1. There is no data for this date (Sorry!)`;
+    updatedEl.textContent = '—';
+  }
+}
+
+document.getElementById('dateApply').addEventListener('click', async () => {
+  const val = document.getElementById('dateInput').value; // yyyy-mm-dd
+  if (!val) return;
+  const folder = toFolderName(val);
+  closeModal();
+  await loadDay(folder);
+});
+
+document.getElementById('latestBtn').addEventListener('click', () => loadDay(''));
+
+// Initial load (Latest = today)
+loadDay('');
+  </script>
+</body>
+</html>

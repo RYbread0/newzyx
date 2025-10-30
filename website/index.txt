@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2685127239648448"
+     crossorigin="anonymous"></script>
+  <title>NEWZYX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">NEWZYX</div>
+        <div class="tag">Your only stream of daily news</div>
+      </div>
+
+      <div class="controls">
+        <button id="latestBtn" class="btn">Latest</button>
+        <button id="calendarBtn" class="btn btn-primary">📅 Choose Date</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card audio-card">
+      <h2>🎧 3-Minute Recap</h2>
+      <audio id="player" controls preload="metadata" src="kids_3min_summary.mp3"></audio>
+      <p class="hint">Press play to listen to the quick summary.</p>
+    </section>
+
+    <section class="card summaries-card">
+      <div class="card-head">
+        <h2>📰 Original Summaries</h2>
+        <div class="meta">
+          <span id="whichDay">Showing: Latest</span> • <span id="updated">Loading…</span>
+        </div>
+      </div>
+      <div id="summaries" class="summaries">Loading summaries…</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made with ❤️ by NEWZYX</p>
+    </div>
+  </footer>
+
+  <!-- Date Picker Modal -->
+  <div id="dateModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="dateModalTitle">
+      <h3 id="dateModalTitle" class="modal-title">Select a date</h3>
+      <p class="modal-help">Your folders are named like <b>9.16.25</b> (M.D.YY). Pick a date and we’ll load that day.</p>
+      <input id="dateInput" type="date" class="date-input" />
+      <div class="modal-actions">
+        <button id="dateCancel" class="btn" data-close>Cancel</button>
+        <button id="dateApply" class="btn btn-primary">Load</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
